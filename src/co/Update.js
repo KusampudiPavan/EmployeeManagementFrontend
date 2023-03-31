@@ -13,9 +13,9 @@ const Update = () => {
     const [lastname, setlastname] = useState('');
     const [email, setemail] = useState('');
     const [phonenumber, setphonenumber] = useState('');
-    const [password, setpassword] = useState('');
+   // const [password, setpassword] = useState('');
 
-    const disabledFunction = firstname.length > 0 && lastname.length > 0 && email.length > 0 && phonenumber.length > 0 && password.length > 0;
+    const disabledFunction = firstname.length > 0 && lastname.length > 0 && email.length > 0 && phonenumber.length > 0;
 
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const Update = () => {
         setlastname(localStorage.getItem('LastName'));
         setemail(localStorage.getItem('Email'));
         setphonenumber(localStorage.getItem('PhoneNumber'));
-        setpassword(localStorage.getItem('Password'));
+      //  setpassword(localStorage.getItem('Password'));
       
     }, []);
 
@@ -36,7 +36,7 @@ const Update = () => {
             lastname:lastname,
             email:email,
             phonenumber:phonenumber,
-            password:password
+          //  password:password
             // addressline1,
             // addressline2,
             // city,
@@ -83,10 +83,10 @@ const Update = () => {
                 </div>
   
                
-                  <div className='col'>
+                  {/* <div className='col'>
                     <label>Password</label>
                     <input min={6} max={20} type="text" name="password"  minLength={6}  value={password}  className="form-control" placeholder="Enter password"  onChange={(e)=> setpassword(e.target.value)} />
-                  </div>
+                  </div> */}
   
                   {/* <div className='col' >
                   <label>Confirm Password</label>

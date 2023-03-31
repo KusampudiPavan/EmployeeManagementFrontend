@@ -4,10 +4,11 @@ import {Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import {FaEdit} from "react-icons/fa"
 import {FaTrashAlt} from "react-icons/fa"
-
+import  AutoLogout from "../components/AutoLogout";
 
 
 export default function DashBoard() {
+  
   const [data, setdata] = useState([])
 
   useEffect(() => {
@@ -19,13 +20,13 @@ export default function DashBoard() {
   // console.log(data)
 
   const editemployee = (d) => {
-  let { id, firstname, lastname ,email, phonenumber,password} = d
+  let { id, firstname, lastname ,email, phonenumber} = d
   localStorage.setItem("ID", id)
   localStorage.setItem("FirstName", firstname)
   localStorage.setItem("LastName", lastname)
   localStorage.setItem("Email", email)
   localStorage.setItem("PhoneNumber", phonenumber)
-  localStorage.setItem("Password", password)
+  //localStorage.setItem("Password", password)
 
 
 }
@@ -46,7 +47,7 @@ function deletefun(email) {
 }
 
   return (
-  
+  <AutoLogout>
     <div>
       <Container>
       
@@ -116,6 +117,7 @@ function deletefun(email) {
       </div>
       </Container>
     </div>
+    </AutoLogout>
   )
 
 }

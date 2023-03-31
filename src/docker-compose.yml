@@ -25,3 +25,51 @@ services:
       - mysql-server
 
 #docker-compose up --build
+
+
+
+# version: '3'
+
+# #containers
+# services:
+#   #containers name
+#   my-redis-server:
+#       #image to start
+#       image: redis
+#       #only available in the docker network
+#       expose:
+#         - '6379'
+#       # create a new folder(redis-data) in local machine to store data from container 
+#       #(/data- where the redis data is store (persistence storage from docker hub redis)
+#       volumes:
+#         - ./redis-data:/data
+#   #to build docker image for the node/any app(EX: visitorapp)
+#   visitor-app:
+#     build: 
+#       dockerfile: Dockerfile
+#       context: ./
+#     ports:
+#       - '9999:9999'
+#     # when to start Ex: like before starting the container starts the server 
+#     depends_on:
+#       - my-redis-server
+    
+#     volumes:
+#       #local machine src linked to container src
+#       - ./src:/usr/visitorapp/src
+#       #restart jus app
+#       #docker restart <conatiner app id>
+#     environment:
+#       - SERVERPORT: 9999
+
+#.js file: const serverPort = process.env.SERVERPORT;
+# app.listen(serverPort,() =>{
+#   console.log('visitorapp started on port' + serverPort);
+# })
+
+# run -> docker-compose up
+# build and run -> docker-compose up --build
+# stop -> docker-compose down     
+
+
+

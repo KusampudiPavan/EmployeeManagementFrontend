@@ -30,7 +30,6 @@ const SignUp = () => {
   const SubmitHandler = sh => {
     sh.preventDefault();
     console.log(data)
-    try {
       axios.post("http://localhost:8082/Employees/add", {
         firstname: firstname,
         lastname: lastname,
@@ -38,16 +37,17 @@ const SignUp = () => {
         phonenumber: phonenumber,
         password: password,
 
+      }).then(res => {
+        if(res.data === "Email id already exists!!"){
+          alert("Email already exists!!")
+          return
+        }
+        else{
+          alert("Employee Regitration Successfull!")
+          setdata(" ")
+          navs('/')
+        }
       });
-      alert("Employee Regitration Successfull!")
-      setdata(" ")
-      navs('/')
-
-    } 
-    catch (error) {
-      alert("User Registration Failed!")
-    }
-    
   }
 
   function cancel(e) {

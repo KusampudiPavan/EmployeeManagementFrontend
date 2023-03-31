@@ -1,19 +1,12 @@
 
 import React, { useState } from "react";
-// import 'src/App.css';
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-//import "./Login.css";
 import 'bootstrap/dist/css/bootstrap.min.css'
-//import { useNavigate } from "react-router-dom";
-//import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import axios from "axios";
 import loginpic from "../assets/loginpic.jpg";
 import {FiLogIn} from "react-icons/fi"
 
 
 function Login() {
- //let navs = useNavigate() 
   const [data,setdata] = useState({
     email: "",
     password: "",
@@ -55,7 +48,7 @@ function Login() {
           <div className='col'>
             <img src={loginpic} alt='error' className='img-login'></img>
           </div>
-          <div className='col'>   
+          <div className='col'>
           <div >
               <form onSubmit={SubmitHandler}>
                 <center>
