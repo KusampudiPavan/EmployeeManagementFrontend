@@ -61,6 +61,8 @@ const EditProfileManager = () => {
     })
 
   }
+
+
   function logout(e) {
     e.preventDefault();
     window.localStorage.removeItem('jwt');
@@ -81,11 +83,11 @@ const EditProfileManager = () => {
                   <form onSubmit={update}>
                     <div className='mb-3' >
                       <label style={{textAlign:"left",float:"left"}}><strong>Firstname:</strong></label>
-                      <input type='text'  placeholder="Firstname" value={firstname} name='firstname' onChange={(e) => setfirstname(e.target.value)} className='form-control' />
+                      <input type='text'  placeholder="Firstname" value={firstname} name='firstname' onChange={(e) => setfirstname(e.target.value.replace(/[^a-z]/gi, ''))} className='form-control' />
                     </div>
                     <div className="mb-3">
                       <label style={{textAlign:"left",float:"left"}}><strong>Lastname:</strong></label>
-                      <input type='text' minLength={4} placeholder='Enter Lastname' value={lastname} name='lastname' onChange={(e) => setlastname(e.target.value)} className='form-control' />
+                      <input type='text' minLength={4} placeholder='Enter Lastname' value={lastname} name='lastname' onChange={(e) => setlastname(e.target.value.replace(/[^a-z]/gi, ''))} className='form-control' />
                     </div>
                     <div className="mb-3">
                       <label style={{textAlign:"left",float:"left"}}><strong>Email:</strong></label>

@@ -25,6 +25,9 @@ const AddEmployeeRegistration = () => {
     const addHandler = fh => {
         setData({ ...data, [fh.target.name]: fh.target.value })
     }
+    const firstlastHandler = fh => {
+        setData({ ...data, [fh.target.name]: fh.target.value.replace(/[^a-z]/gi, '') })
+    }
 
     useEffect(() => {
         axios.get('http://localhost:8082/adminManager/get')
@@ -33,6 +36,7 @@ const AddEmployeeRegistration = () => {
 
             }, [])
     })
+
 
     const AddEmployee = (e) => {
         e.preventDefault();
@@ -46,20 +50,20 @@ const AddEmployeeRegistration = () => {
                 manageremail: manageremail,
                 gender: gender
 
-            }).then(res => console.log(res),
-                alert("Employee added successfully"))
-            navigate("/adminhome")
+            }).then(res => {
+                if(res.data === "Email id already exists!!"){
+                  alert("Employee Email already exists!!")
+                }else{
+                  alert("Regitration Successfull!")
+                  navigate('/adminhome')
+                }
+              });
         }
         catch (error) {
             alert("User failed")
         }
     }
 
-    function logout(e) {
-        e.preventDefault();
-        window.localStorage.removeItem('jwt');
-        window.location.href = '/';
-    }
 
     const validateForm = firstname.length > 0 && lastname.length > 0 && email.length > 0 && password.length > 0 && gender.length > 0 && phonenumber.length > 0 && manageremail.length > 0;
 
@@ -88,23 +92,23 @@ const AddEmployeeRegistration = () => {
 
                                         <div className='mb-3' >
                                             <label style={{ textAlign: "left", float: "left" ,fontStyle:"oblique" }} ><strong>Employee Firstname:</strong></label>
-                                            <input type='text' minLength={4} placeholder='Enter Employee Firstname' value={firstname} name='firstname' onChange={addHandler} className='form-control' />
+                                            <input type='text' minLength={4} placeholder='Enter Employee Firstname' value={firstname} name='firstname' onChange={firstlastHandler} className='form-control'/> 
                                         </div>
                                         <div className="mb-3">
                                             <label style={{ textAlign: "left", float: "left" ,fontStyle:"oblique"  }} ><strong>Employee Lastname:</strong></label>
-                                            <input type='text' minLength={4} placeholder='Enter Employee Lastname' value={lastname} name='lastname' onChange={addHandler} className='form-control' />
+                                            <input type='text' minLength={4} placeholder='Enter Employee Lastname' value={lastname} name='lastname' onChange={firstlastHandler} className='form-control' />
                                         </div>
                                         <div className="mb-3">
                                             <label style={{ textAlign: "left", float: "left",fontStyle:"oblique" }}><strong>Email Id:</strong></label>
-                                            <input type='email' placeholder='Enter Employee Email Address' value={email} name='email' onChange={addHandler} className='form-control' />
+                                            <input type='email' placeholder='Enter Employee Email Address' value={email} name='email' onChange={addHandler} className='form-control'/>
                                         </div>
                                         <div className="mb-3">
                                             <label style={{ textAlign: "left", float: "left",fontStyle:"oblique"  }} ><strong>Password:</strong></label>
-                                            <input type='password' minLength={5} maxLength={20} placeholder='Enter Employee Password' value={password} name='password' onChange={addHandler} className='form-control' />
+                                            <input type='password' minLength={5} maxLength={20} placeholder='Enter Employee Password' value={password} name='password' onChange={addHandler} className='form-control'/>
                                         </div>
                                         <div className="mb-3">
                                             <label style={{ textAlign: "left", float: "left",fontStyle:"oblique"  }} ><strong>Phonenumber:</strong></label>
-                                            <input type='number' minLength={10} maxLength={10} placeholder='Enter Employee Phonenumber' value={phonenumber} name='phonenumber' onChange={addHandler} className='form-control' />
+                                            <input type='number' maxLength={10} minLength={10} placeholder='Enter Employee Phonenumber' value={phonenumber} name='phonenumber' onChange={addHandler} className='form-control' />
                                         </div>
 
                                         <div className="mb-3">

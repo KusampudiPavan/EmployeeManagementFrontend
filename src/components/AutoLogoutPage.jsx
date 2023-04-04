@@ -9,8 +9,9 @@ const AutoLogoutPage = () => {
     }
 
     return (
-        <div className="wrapper">
-            <div className="wrapper-inner-b">
+        <center>
+        <div className="wrapper-inner-signup">
+            <div className="wrapper-inner-a-signup">
                 <div>
                     <center>
                         <h1>Session Logout!!</h1>
@@ -19,6 +20,7 @@ const AutoLogoutPage = () => {
                 </div>
             </div>
         </div>
+        </center>
 
     )
 }

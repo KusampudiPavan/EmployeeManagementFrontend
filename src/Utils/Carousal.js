@@ -16,7 +16,7 @@ function CarouselFade() {
           src={Home3}
           alt="First slide"
           style={{borderColor:'gray',height:"550px"}}
-          onClick={e => nav('/login')}
+        
         />
       </Carousel.Item>
       <Carousel.Item>
@@ -25,7 +25,7 @@ function CarouselFade() {
           src={Home2}
           alt="Second slide"
           style={{borderColor:'gray',height:"550px"}}
-          onClick={e => nav('/login')}
+        
         />
       </Carousel.Item>
       {/* <Carousel.Item>

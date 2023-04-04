@@ -21,6 +21,8 @@ import AcceptRejectLeave from './components/Manager/AcceptRejectLeave'
 import AssignTasks from './components/Manager/AssignTasks'
 import CheckTasksProgress from './components/Manager/CheckTasksProgress'
 import EditProfileManager from './components/Manager/EditProfileManager'
+import AutoLogoutPage from './components/AutoLogoutPage'
+import AutoLogout from './components/AutoLogout'
 
 const App = () => {
   return (
@@ -29,6 +31,7 @@ const App = () => {
       {/* <Header/> */}
     
         {window.localStorage.getItem('jwt') ?
+        <AutoLogout>
           <Routes>
             <Route path='/addmanager' element={<AddManager />} />
             <Route path='/addemployee' element={<EmployeeRegistration />} />
@@ -40,19 +43,20 @@ const App = () => {
             <Route path='/applyleave' element={<ApplyAddLeave />} />
             <Route path='/CheckLeaveStatus' element={<CheckLeaveStatus />} />
             <Route path='/checktasks' element={<CheckTasks />} />
-            <Route path='/updatetasks/:id' element={<UpdateTasks />} />
-            
+            <Route path='/updatetasks/:id' element={<UpdateTasks />} /> 
             <Route path='/AcceptReject' element={<AcceptRejectLeave />} />
             <Route path='/AssignTasks' element={<AssignTasks />} />
-            <Route path='/CheckTaskProgress' element={<CheckTasksProgress />} />
+            <Route path='/CheckTaskProgress' element={<CheckTasksProgress />} /> 
             <Route path='/EditProfileManager' element={<EditProfileManager />} />
           </Routes>
+          </AutoLogout>
           :
           <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' exact element={<HomePage />} />
           <Route path='/loginadmin' element={<LoginAdmin />} />
           <Route path='/loginemployee' element={<LoginEmployee />} />
           <Route path='/loginmanager' element={<LoginManager/>} />
+          <Route path='/sessionlogoutpage' element={<AutoLogoutPage />} />
         </Routes>
         }
         

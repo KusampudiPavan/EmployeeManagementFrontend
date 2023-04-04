@@ -19,6 +19,16 @@ function LoginAdmin() {
 
     const validateForm = email.length > 0 && password.length > 0;
 
+    // const validateEmail = (email) => {
+    //     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    //     if(regex.test(email)){
+    //         return true;
+    //     }
+    //     return false;
+    
+    //   }
+    
+
    function SubmitHandler(sh) {
     sh.preventDefault();
     axios.post("http://localhost:8085/Admin/authenticatetoken",{
@@ -34,6 +44,8 @@ function LoginAdmin() {
       }
     })
   }
+
+  
 
     return (
         <div>       
@@ -74,6 +86,8 @@ function LoginAdmin() {
         </div>
     );
 }
+
+
 export default LoginAdmin;
 
 
